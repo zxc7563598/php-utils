@@ -1,0 +1,18 @@
+{
+  "name": "hejunjie/utils",
+  "description": "包含文件、字符串、数组、网络请求等常用函数的工具类集合，提升开发效率，适用于日常 PHP 项目辅助功能。",
+  "license": "MIT",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Hejunjie\\Utils\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "何俊杰",
+      "email": "junjie.he.925@gmail.com"
+    }
+  ],
+  "require": {}
+}
