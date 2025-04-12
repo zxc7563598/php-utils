@@ -267,7 +267,7 @@ class Str
     }
 
     /**
-     * 字符串加密
+     * 字符串加密(AES-128-CBC)
      *
      * @param string $string 加密内容
      * @param string $key 加密key（默认长度16）
@@ -294,7 +294,7 @@ class Str
     }
 
     /**
-     * 字符串解密
+     * 字符串解密(AES-128-CBC)
      *
      * @param string $encryptedString 加密内容
      * @param string $key 解密key（默认长度16）
