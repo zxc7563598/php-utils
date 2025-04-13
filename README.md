@@ -54,6 +54,7 @@ composer require hejunjie/utils
 | Arr::sortByField()             | 根据二维数组中的指定字段排序     |
 | Arr::removeDuplicatesByField() | 根据二维数组中指定字段去重       |
 | Arr::groupByField()            | 根据二维数组中的指定字段进行分组 |
+| Arr::csvToArray()              | 读取 CSV 文件并返回数组格式      |
 | Arr::arrayToCsv()              | 数组转换为 CSV 格式的字符串      |
 | Arr::xmlParse()                | xml解析为数组                    |
 | Arr::arrayToXml()              | 数组转换为xml                    |
