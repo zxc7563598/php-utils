@@ -116,38 +116,83 @@ class Arr
         return $grouped;
     }
 
+
+    /**
+     * 读取 CSV 文件并返回数组格式
+     *
+     * @param string $filePath 文件路径
+     * @param bool $withHeader 第一行是否作为键名返回（默认 false）
+     * 
+     * @return array 返回的二维数组
+     */
+    public static function csvToArray(string $filePath, bool $withHeader = false): array
+    {
+        if (!file_exists($filePath)) {
+            throw new \Exception("文件不存在：$filePath");
+        }
+
+        $handle = fopen($filePath, 'r');
+        if (!$handle) {
+            throw new \Exception("无法打开文件：$filePath");
+        }
+        $result = [];
+        $headers = [];
+        while (($row = fgetcsv($handle)) !== false) {
+            if ($withHeader && empty($headers)) {
+                $headers = $row;
+                continue;
+            }
+            $result[] = $withHeader ? array_combine($headers, $row) : $row;
+        }
+        fclose($handle);
+        return $result;
+    }
+
     /**
      * 数组转换为 CSV 格式的字符串
      * 
-     * @param array $array 数组
+     * @param array $array 数组 [['A1','A2','A3'],['B1','B2','B3']]
+     * @param string $filePath 输出文件路径，为空则返回字符串不输出到文件
      * @param string $delimiter CSV 分隔符，默认为逗号
      * @param string $enclosure CSV 包裹符号，默认为双引号
      * @param string $escapeChar 转义符号，默认为反斜杠
      * 
-     * @return string
+     * @return string|bool
      */
-    public static function arrayToCsv(array $array, string $delimiter = ',', string $enclosure = '"', string $escapeChar = '\\'): string
+    public static function arrayToCsv(array $array, string $filePath = '', string $delimiter = ',', string $enclosure = '"', string $escapeChar = '\\'): string|bool
     {
-        // 开启输出缓冲区
-        ob_start();
-        // 打开 PHP 输出流
-        $output = fopen('php://output', 'w');
-        // 检查文件句柄是否打开成功
-        if ($output === false) {
-            throw new \Exception('无法打开输出流');
+        // 如果传入了文件路径，则写入文件；否则使用输出缓冲区
+        if ($filePath !== '') {
+            // 创建目录（如果不存在）
+            $dir = dirname($filePath);
+            if (!is_dir($dir)) {
+                if (!mkdir($dir, 0777, true) && !is_dir($dir)) {
+                    throw new \RuntimeException("无法创建目录: $dir");
+                }
+            }
+            $output = fopen($filePath, 'w');
+            if ($output === false) {
+                throw new \Exception("无法写入文件: $filePath");
+            }
+        } else {
+            ob_start();
+            $output = fopen('php://output', 'w');
+            if ($output === false) {
+                throw new \Exception('无法打开输出流');
+            }
         }
-        // 遍历数组并写入 CSV 格式
+        // 写入 CSV 数据
         foreach ($array as $row) {
             if (!is_array($row)) {
                 throw new \Exception('输入的每一行都必须是一个数组');
             }
             fputcsv($output, $row, $delimiter, $enclosure, $escapeChar);
         }
-        // 关闭文件句柄
         fclose($output);
-        // 获取缓冲区内容
-        return ob_get_clean();
+        // 如果是写入文件，返回 true；否则返回 CSV 字符串
+        return $filePath !== '' ? true : ob_get_clean();
     }
+
 
     /**
      * 解析 XML 数据并返回数组
