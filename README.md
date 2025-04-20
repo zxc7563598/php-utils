@@ -12,6 +12,7 @@ composer require hejunjie/utils
 ```
 
 ## 用途 & 初衷
+
 这是一个典型的「开发者懒癌工具库」。
 
 在日常项目中，你可能也经常遇到这些情况：
@@ -32,18 +33,18 @@ composer require hejunjie/utils
 
 ### 字符串操作
 
-| 方法                            | 说明                             |
-| :------------------------------ | :------------------------------- |
-| Str::containsAny()              | 检查字符串中是否存在数组中的内容 |
-| Str::padString()                | 补充特定字符串，使其达到指定长度 |
-| Str::replaceFirst()             | 替换字符串中第一次出现的搜索值   |
-| Str::generateRandomString()     | 生成随机字符串                   |
-| Str::getRandomSurname()         | 获取随机姓氏                     |
-| Str::truncateString()           | 截断字符串                       |
-| Str::maskString()               | 字符串掩码                       |
-| Str::removeWhitespace()         | 移除字符串中的所有空白字符       |
-| Str::stringEncrypt()            | 字符串加密(AES-128-CBC)                       |
-| Str::stringDecrypt()            | 字符串解密(AES-128-CBC)                       |
+| 方法                             | 说明                             |
+| :------------------------------- | :------------------------------- |
+| Str::containsAny()               | 检查字符串中是否存在数组中的内容 |
+| Str::padString()                 | 补充特定字符串，使其达到指定长度 |
+| Str::replaceFirst()              | 替换字符串中第一次出现的搜索值   |
+| Str::generateRandomString()      | 生成随机字符串                   |
+| Str::getRandomSurname()          | 获取随机姓氏                     |
+| Str::truncateString()            | 截断字符串                       |
+| Str::maskString()                | 字符串掩码                       |
+| Str::removeWhitespace()          | 移除字符串中的所有空白字符       |
+| Str::stringEncrypt()             | 字符串加密(AES-128-CBC)          |
+| Str::stringDecrypt()             | 字符串解密(AES-128-CBC)          |
 | Str::formatDurationFromSeconds() | 根据秒数转换为可读性时间         |
 
 ### 数组操作
@@ -56,23 +57,22 @@ composer require hejunjie/utils
 | Arr::groupByField()            | 根据二维数组中的指定字段进行分组 |
 | Arr::csvToArray()              | 读取 CSV 文件并返回数组格式      |
 | Arr::arrayToCsv()              | 数组转换为 CSV 格式的字符串      |
-| Arr::xmlParse()                | xml解析为数组                    |
-| Arr::arrayToXml()              | 数组转换为xml                    |
+| Arr::xmlParse()                | xml 解析为数组                   |
+| Arr::arrayToXml()              | 数组转换为 xml                   |
 
 ### 文件操作
 
-| 方法                                     | 说明                       |
-| :--------------------------------------- | :------------------------- |
-| FileUtils::readFile()                    | 读取文件内容               |
-| FileUtils::writeToFile()                 | 将内容写入文件             |
-| FileUtils::getFileExtension()            | 获取文件扩展名             |
-| FileUtils::joinPaths()                   | 拼接多个路径               |
-| FileUtils::getFileNameWithoutExtension() | 获取文件名（不带扩展名）   |
-| FileUtils::fileDelete()                  | 删除文件或目录             |
-| FileUtils::writeUniqueLinesToFile()      | 获取文件中的唯一行（去重） |
-| FileUtils::getCommonLinesFromFiles()     | 从多个文件中获取交集行     |
-| FileUtils::extractColumnFromCsvFiles()   | 从多个csv文件中快速提取列  |
-
+| 方法                                     | 说明                        |
+| :--------------------------------------- | :-------------------------- |
+| FileUtils::readFile()                    | 读取文件内容                |
+| FileUtils::writeToFile()                 | 将内容写入文件              |
+| FileUtils::getFileExtension()            | 获取文件扩展名              |
+| FileUtils::joinPaths()                   | 拼接多个路径                |
+| FileUtils::getFileNameWithoutExtension() | 获取文件名（不带扩展名）    |
+| FileUtils::fileDelete()                  | 删除文件或目录              |
+| FileUtils::writeUniqueLinesToFile()      | 获取文件中的唯一行（去重）  |
+| FileUtils::getCommonLinesFromFiles()     | 从多个文件中获取交集行      |
+| FileUtils::extractColumnFromCsvFiles()   | 从多个 csv 文件中快速提取列 |
 
 ### 网络请求操作
 
@@ -80,7 +80,6 @@ composer require hejunjie/utils
 | :---------------------------- | :----------------------- |
 | HttpClient::sendGetRequest()  | 使用 cURL 发送 GET 请求  |
 | HttpClient::sendPostRequest() | 使用 cURL 发送 POST 请求 |
-
 
 ### 图片操作
 
@@ -91,6 +90,18 @@ composer require hejunjie/utils
 | Img::base64ToImage()        | 将 Base64 字符串保存为图片                             |
 | Img::compressImage()        | 压缩图片到指定大小（单位 KB），支持多种格式转换为 JPEG |
 | Img::resizeImage()          | 调整图片分辨率，保持宽高比                             |
+
+### 导出操作
+
+| 方法                           | 说明          |
+| :----------------------------- | :------------ |
+| DataExporter::exportTxt()      | 导出 TXT      |
+| DataExporter::exportMarkdown() | 导出 Markdown |
+| DataExporter::exportCsv()      | 导出 CSV      |
+| DataExporter::exportJson()     | 导出 JSON     |
+| DataExporter::exportSql()      | 导出 SQL      |
+| DataExporter::exportHtml()     | 导出 HTML     |
+| DataExporter::exportXml()      | 导出 XML      |
 
 ## 🔧 更多工具包（可独立使用，也可统一安装）
 
@@ -119,11 +130,3 @@ composer require hejunjie/tools
 ---
 
 该库后续将持续更新，添加更多实用功能。欢迎大家提供建议和反馈，我会根据大家的意见实现新的功能，共同提升开发效率。
-
-
-
-
-
-
-
-
