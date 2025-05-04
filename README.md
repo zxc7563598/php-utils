@@ -1,136 +1,141 @@
 # hejunjie/utils
 
-一个零碎但实用的 PHP 工具函数集合库。
+<div align="center">
+  <a href="./README.md">English</a>｜<a href="./README.zh-CN.md">简体中文</a>
+  <hr width="50%"/>
+</div>
 
-> 🌱 很多实现原理都不复杂，但总在项目里反复写，写多了心态有点崩。
-> 干脆集中起来，不重复造轮子，省心省力。
+A lightweight and practical PHP utility library that offers a collection of commonly used helper functions for files, strings, arrays, and HTTP requests—designed to streamline development and support everyday PHP projects.
 
-## 安装方式
+> 🌱 Many of these implementations are conceptually simple, but rewriting them repeatedly across projects can become quite tedious.
+> To make things easier, I gathered these utilities in one place to avoid reinventing the wheel — saving both time and effort.
+
+## Installation
 
 ```bash
 composer require hejunjie/utils
 ```
 
-## 用途 & 初衷
+## Purpose & Motivation
 
-这是一个典型的「开发者懒癌工具库」。
+This is a typical "Developer's Time-Saving Toolkit."
+In everyday projects, you may often find yourself dealing with situations like:
 
-在日常项目中，你可能也经常遇到这些情况：
+Rewriting array operations over and over again;
 
-一个数组操作写了无数次；
+- Searching StackOverflow every time you need to format file sizes;
+- Copy-pasting checks to determine if a string is JSON, a phone number, or an email address;
+- Having to refactor your utility classes whenever the project changes...
 
-文件大小格式化总要搜 StackOverflow；
+So, I’ve compiled these simple and frequently-used methods into this toolkit. It’s not about complexity or fancy features; the goal is to keep it simple, easy to use, and save you time and effort.
 
-想判断字符串是不是 JSON、是不是手机号、是不是邮箱，结果各种复制粘贴；
+## Currently Supported Methods (Updating)
 
-项目变了，原来的工具类又得重新封装一遍...
+## List of Currently Supported Methods
 
-所以，我把这些经常用、常见又简单的小方法统一整理了一下，写成这个工具库。不求高级，不追花哨，目标就是：简单易用，解放双手。
+### String Operations
 
-## 当前支持的方法（更新中）
+| method                           | describe                                                     |
+| :------------------------------- | :----------------------------------------------------------- |
+| Str::containsAny()               | Check if a string contains any of the elements in an array   |
+| Str::padString()                 | Pad a string to a specified length with a specific character |
+| Str::replaceFirst()              | Replace the first occurrence of a search value in a string   |
+| Str::generateRandomString()      | Generate a random string                                     |
+| Str::getRandomSurname()          | Get a random surname                                         |
+| Str::truncateString()            | Truncate a string                                            |
+| Str::maskString()                | String masking                                               |
+| Str::removeWhitespace()          | Remove all whitespace characters from a string               |
+| Str::stringEncrypt()             | Encrypt a string (AES-128-CBC)                               |
+| Str::stringDecrypt()             | Decrypt a string (AES-128-CBC)                               |
+| Str::formatDurationFromSeconds() | Convert seconds to a human-readable time format              |
 
-## 当前支持的方法列表
+### Array Operations
 
-### 字符串操作
+| method                         | describe                                                    |
+| :----------------------------- | :---------------------------------------------------------- |
+| Arr::arrayIntersect()          | Get the intersection of two arrays                          |
+| Arr::sortByField()             | Sort a 2D array by a specific field                         |
+| Arr::removeDuplicatesByField() | Remove duplicates from a 2D array based on a specific field |
+| Arr::groupByField()            | Group a 2D array by a specific field                        |
+| Arr::csvToArray()              | Read a CSV file and return it as an array                   |
+| Arr::arrayToCsv()              | Convert an array to a CSV formatted string                  |
+| Arr::xmlParse()                | Parse XML into an array                                     |
+| Arr::arrayToXml()              | Convert an array to XML                                     |
 
-| 方法                             | 说明                             |
-| :------------------------------- | :------------------------------- |
-| Str::containsAny()               | 检查字符串中是否存在数组中的内容 |
-| Str::padString()                 | 补充特定字符串，使其达到指定长度 |
-| Str::replaceFirst()              | 替换字符串中第一次出现的搜索值   |
-| Str::generateRandomString()      | 生成随机字符串                   |
-| Str::getRandomSurname()          | 获取随机姓氏                     |
-| Str::truncateString()            | 截断字符串                       |
-| Str::maskString()                | 字符串掩码                       |
-| Str::removeWhitespace()          | 移除字符串中的所有空白字符       |
-| Str::stringEncrypt()             | 字符串加密(AES-128-CBC)          |
-| Str::stringDecrypt()             | 字符串解密(AES-128-CBC)          |
-| Str::formatDurationFromSeconds() | 根据秒数转换为可读性时间         |
+### File Operations
 
-### 数组操作
+| method                                   | describe                                        |
+| :--------------------------------------- | :---------------------------------------------- |
+| FileUtils::readFile()                    | Read file contents                              |
+| FileUtils::writeToFile()                 | Write content to a file                         |
+| FileUtils::getFileExtension()            | Get the file extension                          |
+| FileUtils::joinPaths()                   | Join multiple paths together                    |
+| FileUtils::getFileNameWithoutExtension() | Get the file name (without extension)           |
+| FileUtils::fileDelete()                  | Delete a file or directory                      |
+| FileUtils::writeUniqueLinesToFile()      | Get unique lines from a file (deduplication)    |
+| FileUtils::getCommonLinesFromFiles()     | Get intersecting lines from multiple files      |
+| FileUtils::extractColumnFromCsvFiles()   | Quickly extract columns from multiple CSV files |
 
-| 方法                           | 说明                             |
-| :----------------------------- | :------------------------------- |
-| Arr::arrayIntersect()          | 获取两个数组的交集               |
-| Arr::sortByField()             | 根据二维数组中的指定字段排序     |
-| Arr::removeDuplicatesByField() | 根据二维数组中指定字段去重       |
-| Arr::groupByField()            | 根据二维数组中的指定字段进行分组 |
-| Arr::csvToArray()              | 读取 CSV 文件并返回数组格式      |
-| Arr::arrayToCsv()              | 数组转换为 CSV 格式的字符串      |
-| Arr::xmlParse()                | xml 解析为数组                   |
-| Arr::arrayToXml()              | 数组转换为 xml                   |
+### Network Request Operations
 
-### 文件操作
+| method                        | describe                       |
+| :---------------------------- | :----------------------------- |
+| HttpClient::sendGetRequest()  | Send a GET request using cURL  |
+| HttpClient::sendPostRequest() | Send a POST request using cURL |
 
-| 方法                                     | 说明                        |
-| :--------------------------------------- | :-------------------------- |
-| FileUtils::readFile()                    | 读取文件内容                |
-| FileUtils::writeToFile()                 | 将内容写入文件              |
-| FileUtils::getFileExtension()            | 获取文件扩展名              |
-| FileUtils::joinPaths()                   | 拼接多个路径                |
-| FileUtils::getFileNameWithoutExtension() | 获取文件名（不带扩展名）    |
-| FileUtils::fileDelete()                  | 删除文件或目录              |
-| FileUtils::writeUniqueLinesToFile()      | 获取文件中的唯一行（去重）  |
-| FileUtils::getCommonLinesFromFiles()     | 从多个文件中获取交集行      |
-| FileUtils::extractColumnFromCsvFiles()   | 从多个 csv 文件中快速提取列 |
+### Image Operations
 
-### 网络请求操作
+| method                      | describe                                                                                           |
+| :-------------------------- | :------------------------------------------------------------------------------------------------- |
+| Img::downloadImageFromUrl() | Download an image from a URL                                                                       |
+| Img::imageToBase64()        | Convert an image to a Base64 string                                                                |
+| Img::base64ToImage()        | Save a Base64 string as an image                                                                   |
+| Img::compressImage()        | Compress an image to a specified size (in KB), with support for converting various formats to JPEG |
+| Img::resizeImage()          | Resize an image while maintaining aspect ratio                                                     |
 
-| 方法                          | 说明                     |
-| :---------------------------- | :----------------------- |
-| HttpClient::sendGetRequest()  | 使用 cURL 发送 GET 请求  |
-| HttpClient::sendPostRequest() | 使用 cURL 发送 POST 请求 |
+### Export Operations
 
-### 图片操作
+| method                         | describe        |
+| :----------------------------- | :-------------- |
+| DataExporter::exportTxt()      | Export TXT      |
+| DataExporter::exportMarkdown() | Export Markdown |
+| DataExporter::exportCsv()      | Export CSV      |
+| DataExporter::exportJson()     | Export JSON     |
+| DataExporter::exportSql()      | Export SQL      |
+| DataExporter::exportHtml()     | Export HTML     |
+| DataExporter::exportXml()      | Export XML      |
 
-| 方法                        | 说明                                                   |
-| :-------------------------- | :----------------------------------------------------- |
-| Img::downloadImageFromUrl() | 从 URL 下载图片                                        |
-| Img::imageToBase64()        | 将图片转换为 Base64 字符串                             |
-| Img::base64ToImage()        | 将 Base64 字符串保存为图片                             |
-| Img::compressImage()        | 压缩图片到指定大小（单位 KB），支持多种格式转换为 JPEG |
-| Img::resizeImage()          | 调整图片分辨率，保持宽高比                             |
+## 🔧 Additional Toolkits (Can be used independently or installed together)
 
-### 导出操作
-
-| 方法                           | 说明          |
-| :----------------------------- | :------------ |
-| DataExporter::exportTxt()      | 导出 TXT      |
-| DataExporter::exportMarkdown() | 导出 Markdown |
-| DataExporter::exportCsv()      | 导出 CSV      |
-| DataExporter::exportJson()     | 导出 JSON     |
-| DataExporter::exportSql()      | 导出 SQL      |
-| DataExporter::exportHtml()     | 导出 HTML     |
-| DataExporter::exportXml()      | 导出 XML      |
-
-## 🔧 更多工具包（可独立使用，也可统一安装）
-
-本项目最初是从 [hejunjie/tools](https://github.com/zxc7563598/php-tools) 拆分而来，如果你想一次性安装所有功能组件，也可以使用统一包：
+This project was originally extracted from [hejunjie/tools](https://github.com/zxc7563598/php-tools).
+To install all features in one go, feel free to use the all-in-one package:
 
 ```bash
 composer require hejunjie/tools
 ```
 
-当然你也可以按需选择安装以下功能模块：
+Alternatively, feel free to install only the modules you need：
 
-[hejunjie/cache](https://github.com/zxc7563598/php-cache) - 多层缓存系统，基于装饰器模式。
+[hejunjie/utils](https://github.com/zxc7563598/php-utils) - A lightweight and practical PHP utility library that offers a collection of commonly used helper functions for files, strings, arrays, and HTTP requests—designed to streamline development and support everyday PHP projects.
 
-[hejunjie/china-division](https://github.com/zxc7563598/php-china-division) - 中国省市区划分数据包。
+[hejunjie/cache](https://github.com/zxc7563598/php-cache) - A layered caching system built with the decorator pattern. Supports combining memory, file, local, and remote caches to improve hit rates and simplify cache logic.
 
-[hejunjie/error-log](https://github.com/zxc7563598/php-error-log) - 责任链日志上报系统。
+[hejunjie/china-division](https://github.com/zxc7563598/php-china-division) - Regularly updated dataset of China's administrative divisions with ID-card address parsing. Distributed via Composer and versioned for use in forms, validation, and address-related features
 
-[hejunjie/mobile-locator](https://github.com/zxc7563598/php-mobile-locator) - 国内手机号归属地 & 运营商识别。
+[hejunjie/error-log](https://github.com/zxc7563598/php-error-log) - An error logging component using the Chain of Responsibility pattern. Supports multiple output channels like local files, remote APIs, and console logs—ideal for flexible and scalable logging strategies.
 
-[hejunjie/address-parser](https://github.com/zxc7563598/php-address-parser) - 收货地址智能解析工具，支持从非结构化文本中提取用户/地址信息。
+[hejunjie/mobile-locator](https://github.com/zxc7563598/php-mobile-locator) - A mobile number lookup library based on Chinese carrier rules. Identifies carriers and regions, suitable for registration checks, user profiling, and data archiving.
 
-[hejunjie/url-signer](https://github.com/zxc7563598/php-url-signer) - URL 签名工具，支持对 URL 进行签名和验证。
+[hejunjie/address-parser](https://github.com/zxc7563598/php-address-parser) - An intelligent address parser that extracts name, phone number, ID number, region, and detailed address from unstructured text—perfect for e-commerce, logistics, and CRM systems.
 
-[hejunjie/google-authenticator](https://github.com/zxc7563598/php-google-authenticator) - Google Authenticator 及类似应用的密钥生成、二维码创建和 OTP 验证。
+[hejunjie/url-signer](https://github.com/zxc7563598/php-url-signer) - A PHP library for generating URLs with encryption and signature protection—useful for secure resource access and tamper-proof links.
 
-[hejunjie/simple-rule-engine](https://github.com/zxc7563598/php-simple-rule-engine) - 一个轻量、易用的 PHP 规则引擎，支持多条件组合、动态规则执行。
+[hejunjie/google-authenticator](https://github.com/zxc7563598/php-google-authenticator) - A PHP library for generating and verifying Time-Based One-Time Passwords (TOTP). Compatible with Google Authenticator and similar apps, with features like secret generation, QR code creation, and OTP verification.
 
-👀 所有包都遵循「轻量实用、解放双手」的原则，能单独用，也能组合用，自由度高，欢迎 star 🌟 或提 issue。
+[hejunjie/simple-rule-engine](https://github.com/zxc7563598/php-simple-rule-engine) - A lightweight and flexible PHP rule engine supporting complex conditions and dynamic rule execution—ideal for business logic evaluation and data validation.
+
+👀 All packages follow the principles of being lightweight and practical — designed to save you time and effort. They can be used individually or combined flexibly. Feel free to ⭐ star the project or open an issue anytime!
 
 ---
 
-该库后续将持续更新，添加更多实用功能。欢迎大家提供建议和反馈，我会根据大家的意见实现新的功能，共同提升开发效率。
+This library will continue to be updated with more practical features. Suggestions and feedback are always welcome — I’ll prioritize new functionality based on community input to help improve development efficiency together.
