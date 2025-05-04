@@ -12,6 +12,8 @@
 
 ## 安装方式
 
+使用 Composer 安装：
+
 ```bash
 composer require hejunjie/utils
 ```
@@ -133,6 +135,7 @@ composer require hejunjie/tools
 [hejunjie/google-authenticator](https://github.com/zxc7563598/php-google-authenticator) - 一个用于生成和验证时间基础一次性密码（TOTP）的 PHP 包，支持 Google Authenticator 及类似应用。功能包括密钥生成、二维码创建和 OTP 验证。
 
 [hejunjie/simple-rule-engine](https://github.com/zxc7563598/php-simple-rule-engine) - 一个轻量、易用的 PHP 规则引擎，支持多条件组合、动态规则执行，适合业务规则判断、数据校验等场景。
+
 👀 所有包都遵循「轻量实用、解放双手」的原则，能单独用，也能组合用，自由度高，欢迎 star 🌟 或提 issue。
 
 ---

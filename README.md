@@ -12,6 +12,8 @@ A lightweight and practical PHP utility library that offers a collection of comm
 
 ## Installation
 
+Install via Composer:
+
 ```bash
 composer require hejunjie/utils
 ```
