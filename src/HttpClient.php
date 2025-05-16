@@ -96,4 +96,52 @@ class HttpClient
             'data' => $response
         ];
     }
+
+    /**
+     * 下载远程文件并保存到本地
+     *
+     * @param string $url 资源链接
+     * @param string $savePath 本地存储目录
+     * @param string|null $filename 自定义文件名（可选）
+     * 
+     * @return string 返回保存后的绝对路径
+     * @throws Exception  下载或保存失败时抛出异常
+     */
+    public static function downloadFile(string $url, string $savePath, ?string $filename = null): string
+    {
+        // 尝试获取文件内容
+        $content = @file_get_contents($url);
+        if ($content === false) {
+            throw new \Exception("无法下载资源：$url");
+        }
+
+        // 确保保存路径存在
+        if (!is_dir($savePath)) {
+            if (!mkdir($savePath, 0777, true) && !is_dir($savePath)) {
+                throw new \Exception("无法创建目录：$savePath");
+            }
+        }
+
+        // 提取原始文件后缀
+        $urlPath = parse_url($url, PHP_URL_PATH);
+        $extension = pathinfo($urlPath, PATHINFO_EXTENSION);
+        $extension = $extension ? ".$extension" : '';
+
+        // 生成文件名
+        if (!$filename) {
+            $filename = uniqid('file_', true) . $extension;
+        } elseif (!str_ends_with($filename, $extension) && $extension) {
+            $filename .= $extension;
+        }
+
+        // 组合完整保存路径
+        $fullPath = rtrim($savePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $filename;
+
+        // 保存文件
+        if (file_put_contents($fullPath, $content) === false) {
+            throw new \Exception("无法保存文件到：$fullPath");
+        }
+
+        return realpath($fullPath) ?: $fullPath;
+    }
 }
