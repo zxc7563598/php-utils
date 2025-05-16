@@ -80,10 +80,11 @@ So, I’ve compiled these simple and frequently-used methods into this toolkit. 
 
 ### Network Request Operations
 
-| method                        | describe                       |
-| :---------------------------- | :----------------------------- |
-| HttpClient::sendGetRequest()  | Send a GET request using cURL  |
-| HttpClient::sendPostRequest() | Send a POST request using cURL |
+| method                        | describe                                    |
+| :---------------------------- | :------------------------------------------ |
+| HttpClient::sendGetRequest()  | Send a GET request using cURL               |
+| HttpClient::sendPostRequest() | Send a POST request using cURL              |
+| HttpClient::downloadFile()    | Download remote files and save them locally |
 
 ### Image Operations
 

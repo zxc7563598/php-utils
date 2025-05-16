@@ -85,6 +85,7 @@ composer require hejunjie/utils
 | :---------------------------- | :----------------------- |
 | HttpClient::sendGetRequest()  | 使用 cURL 发送 GET 请求  |
 | HttpClient::sendPostRequest() | 使用 cURL 发送 POST 请求 |
+| HttpClient::downloadFile() | 下载远程文件并保存到本地 |
 
 ### 图片操作
 
