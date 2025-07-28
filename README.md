@@ -10,7 +10,7 @@ A lightweight and practical PHP utility library that offers a collection of comm
 > 🌱 Many of these implementations are conceptually simple, but rewriting them repeatedly across projects can become quite tedious.
 > To make things easier, I gathered these utilities in one place to avoid reinventing the wheel — saving both time and effort.
 
-**This project has been parsed by Zread. If you need a quick overview of the project, you can click on the number of views to view it：[Understand this project](https://zread.ai/zxc7563598/php-utils)**
+**This project has been parsed by Zread. If you need a quick overview of the project, you can click here to view it：[Understand this project](https://zread.ai/zxc7563598/php-utils)**
 
 ## Installation
 
