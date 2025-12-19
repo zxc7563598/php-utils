@@ -80,6 +80,13 @@ So, I’ve compiled these simple and frequently-used methods into this toolkit. 
 | FileUtils::getCommonLinesFromFiles()     | Get intersecting lines from multiple files      |
 | FileUtils::extractColumnFromCsvFiles()   | Quickly extract columns from multiple CSV files |
 
+### CSV operation
+
+| Method                | Explanation                        |
+| :-------------------- | :--------------------------------- |
+| Csv::readCsvToArray() | Read CSV file and convert to array |
+| Csv::arrayToCsv()     | Write the array to a CSV file      |
+
 ### Network Request Operations
 
 | method                        | describe                                    |

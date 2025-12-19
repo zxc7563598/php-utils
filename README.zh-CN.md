@@ -81,13 +81,20 @@ composer require hejunjie/utils
 | FileUtils::getCommonLinesFromFiles()     | 从多个文件中获取交集行      |
 | FileUtils::extractColumnFromCsvFiles()   | 从多个 csv 文件中快速提取列 |
 
+### CSV 操作
+
+| 方法                  | 说明                      |
+| :-------------------- | :------------------------ |
+| Csv::readCsvToArray() | 读取 CSV 文件并转换为数组 |
+| Csv::arrayToCsv()     | 将数组写入 CSV 文件       |
+
 ### 网络请求操作
 
 | 方法                          | 说明                     |
 | :---------------------------- | :----------------------- |
 | HttpClient::sendGetRequest()  | 使用 cURL 发送 GET 请求  |
 | HttpClient::sendPostRequest() | 使用 cURL 发送 POST 请求 |
-| HttpClient::downloadFile() | 下载远程文件并保存到本地 |
+| HttpClient::downloadFile()    | 下载远程文件并保存到本地 |
 
 ### 图片操作
 
@@ -133,7 +140,7 @@ composer require hejunjie/tools
 
 [hejunjie/address-parser](https://github.com/zxc7563598/php-address-parser) - 收货地址智能解析工具，支持从非结构化文本中提取姓名、手机号、身份证号、省市区、详细地址等字段，适用于电商、物流、CRM 等系统。
 
-[hejunjie/url-signer](https://github.com/zxc7563598/php-url-signer) - 用于生成带签名和加密保护的URL链接的PHP工具包，适用于需要保护资源访问的场景
+[hejunjie/url-signer](https://github.com/zxc7563598/php-url-signer) - 用于生成带签名和加密保护的 URL 链接的 PHP 工具包，适用于需要保护资源访问的场景
 
 [hejunjie/google-authenticator](https://github.com/zxc7563598/php-google-authenticator) - 一个用于生成和验证时间基础一次性密码（TOTP）的 PHP 包，支持 Google Authenticator 及类似应用。功能包括密钥生成、二维码创建和 OTP 验证。
 
