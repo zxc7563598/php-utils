@@ -22,7 +22,7 @@ class Csv
      * @return array
      * @throws Exception
      */
-    function readCsvToArray(string $csvPath, bool $useHeaderAsKey = true, string $delimiter = ','): array
+    public static function readCsvToArray(string $csvPath, bool $useHeaderAsKey = true, string $delimiter = ','): array
     {
         if (!is_readable($csvPath)) {
             throw new \Exception("CSV 文件不可读: {$csvPath}");
@@ -63,7 +63,7 @@ class Csv
      * @return void
      * @throws Exception
      */
-    function arrayToCsv(array $data, string $filePath, bool $writeHeader = true, string $delimiter = ','): void
+    public static function arrayToCsv(array $data, string $filePath, bool $writeHeader = true, string $delimiter = ','): void
     {
         if (empty($data)) {
             throw new \Exception('写入 CSV 的数据为空');
